@@ -1,0 +1,47 @@
+# Datasets (too large for git)
+datasets/
+data/
+
+# Model files
+models/
+*.h5
+*.keras
+*.tflite
+*.pb
+*.onnx
+
+# Kaggle
+.kaggle/
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TensorBoard logs
+logs/
+tensorboard_logs/
+
+# Jupyter
+.ipynb_checkpoints/
