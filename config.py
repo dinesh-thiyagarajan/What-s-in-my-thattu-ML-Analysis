@@ -56,8 +56,8 @@ RANDOM_SEED = 42
 
 # ─── Training Hyperparameters ────────────────────────────────────────────────
 BATCH_SIZE = 32
-PHASE1_EPOCHS = 10      # Feature extraction (frozen base)
-PHASE2_EPOCHS = 20      # Fine-tuning (top layers unfrozen)
+PHASE1_EPOCHS = int(os.environ.get("PHASE1_EPOCHS", 10))   # Feature extraction (frozen base); override with env var
+PHASE2_EPOCHS = int(os.environ.get("PHASE2_EPOCHS", 20))   # Fine-tuning (top layers unfrozen); override with env var
 PHASE1_LR = 1e-3
 PHASE2_LR = 1e-4
 DROPOUT_RATE = 0.2

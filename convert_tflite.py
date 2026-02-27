@@ -203,19 +203,12 @@ def main():
     # Load model
     model = load_trained_model()
 
-    # Get original model size
-    temp_path = os.path.join(MODEL_DIR, "_temp_saved_model")
-    model.save(temp_path)
-    original_size = sum(
-        os.path.getsize(os.path.join(dirpath, filename))
-        for dirpath, dirnames, filenames in os.walk(temp_path)
-        for filename in filenames
-    )
-    original_size_mb = original_size / (1024 * 1024)
+    # Get original model size from the .keras file
+    best_model_path = os.path.join(MODEL_DIR, "best_model.keras")
+    final_model_path = os.path.join(MODEL_DIR, "final_model.keras")
+    source_path = best_model_path if os.path.exists(best_model_path) else final_model_path
+    original_size_mb = os.path.getsize(source_path) / (1024 * 1024)
     print(f"Original model size: {original_size_mb:.2f} MB")
-    # Clean up temp
-    import shutil
-    shutil.rmtree(temp_path, ignore_errors=True)
 
     # Convert to float16
     float16_model = convert_float16(model)
